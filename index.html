@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta CNPJ</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-building"></i> Consulta CNPJ</h1>
+            <p>Consulta gratuita de informações de empresas</p>
+        </header>
+
+        <main>
+            <div class="search-section">
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        id="cnpjInput" 
+                        placeholder="Digite o CNPJ (apenas números)"
+                        maxlength="18"
+                        oninput="formatarCNPJ(this)"
+                    >
+                    <button onclick="consultarCNPJ()" class="btn-primary">
+                        <i class="fas fa-search"></i> Consultar
+                    </button>
+                </div>
+                <p class="hint">Ex: 33.000.167/0001-01 ou 33000167000101</p>
+            </div>
+
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Consultando informações...</p>
+            </div>
+
+            <div id="error" class="error hidden"></div>
+
+            <div id="result" class="result-card hidden">
+                <div class="result-header">
+                    <h2><i class="fas fa-file-alt"></i> Informações da Empresa</h2>
+                    <button onclick="gerarPDF()" class="btn-secondary">
+                        <i class="fas fa-file-pdf"></i> Gerar PDF
+                    </button>
+                </div>
+
+                <div class="info-grid" id="infoContainer">
+                    <!-- Informações serão inseridas aqui via JavaScript -->
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Desenvolvido para atividade escolar - Matemática III - 3º Ano D</p>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
